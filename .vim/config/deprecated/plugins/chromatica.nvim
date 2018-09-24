@@ -1,0 +1,6 @@
+" chromatica.nvim
+let g:chromatica#enable_at_startup = 1
+let g:chromatica#responsive_mode = 1
+let g:chromatica#delay_ms = 400
+let g:chromatica#highlight_feature_level = 1
+let g:chromatica#compile_args = ['-Wall', '-Wextra', '-std=c++14']

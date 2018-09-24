@@ -1,3 +1,33 @@
+# ignore everything
 /*
 
+# track gitignore itself
 !.gitignore
+
+# configs in root directory
+!.zshrc
+!.xprofile
+
+# vim configurations
+.vim/*
+!.vim/
+!.vim/vimrc
+!.vim/config/
+
+# .config configurations
+.config/*
+!.config/
+!.config/locale.conf
+!.config/user-dirs.dirs
+!.config/user-dirs.locale
+!.config/chromium-flags.conf
+# conky
+!.config/conky/
+# alacritty, terminal emulator
+!.config/alacritty/
+# vscode
+!.config/Code - OSS/User/*.json
+# yay, AUR helper
+!.config/yay
+# neovim
+!.config/nvim/
