@@ -42,7 +42,6 @@ Plug 'Shougo/neoinclude.vim'
 " Completion framework
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'zchee/deoplete-jedi'
-Plug 'tweekmonster/deoplete-clang2'
 Plug 'zchee/deoplete-zsh'
 Plug 'carlitux/deoplete-ternjs'
 

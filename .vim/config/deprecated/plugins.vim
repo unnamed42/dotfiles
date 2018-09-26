@@ -33,6 +33,7 @@ Plug 'roxma/nvim-cm-tern'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'zchee/deoplete-clang'
+Plug 'tweekmonster/deoplete-clang2'
 Plug 'autozimu/LanguageClient-neovim', {'on': []}
 
 Plug 'prabirshrestha/asyncomplete.vim'
