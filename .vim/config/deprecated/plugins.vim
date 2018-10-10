@@ -34,7 +34,6 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'zchee/deoplete-clang'
 Plug 'tweekmonster/deoplete-clang2'
-Plug 'autozimu/LanguageClient-neovim', {'on': []}
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
@@ -45,4 +44,3 @@ Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'prabirshrestha/asyncomplete-flow.vim'
-

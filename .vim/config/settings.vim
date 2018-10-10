@@ -163,6 +163,6 @@ au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == 
 " start vim in insert mode
 "autocmd BufRead,BufNewFile * startinsert
 
-set completeopt=longest
+set completeopt=noinsert,menuone,noselect
 
 set shortmess=asIc
