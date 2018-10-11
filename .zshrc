@@ -1,4 +1,3 @@
-
 alias up='yay -Syu'
 
 alias pi='pacman -Si'
@@ -28,10 +27,10 @@ alias hgs='hexo g && hexo s'
 alias chgs='rm -rf /home/h/site/public/{css,js} && hexo g &&
 hexo s'
 
-alias restart='systemctl restart'
-alias status='systemctl status'
-alias enable='systemctl enable'
-alias disable='systemctl disable'
+alias restart='sudo systemctl restart'
+alias status='sudo systemctl status'
+alias enable='sudo systemctl enable'
+alias disable='sudo systemctl disable'
 alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
 
