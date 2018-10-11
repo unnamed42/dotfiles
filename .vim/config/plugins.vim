@@ -8,7 +8,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-buftabline'
 
 " Editing
-Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -36,14 +35,7 @@ Plug 'tbastos/vim-lua'
 
 " Completion
 Plug 'richq/vim-cmake-completion'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neoinclude.vim'
-" Completion framework
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-zsh'
-Plug 'carlitux/deoplete-ternjs'
+Plug 'Valloric/YouCompleteMe'
 
 " Coding
 Plug 'lervag/vimtex'

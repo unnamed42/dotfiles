@@ -1,8 +1,13 @@
 " YouCompleteMe
 autocmd FileType vim setlocal omnifunc=OmnicompleteVimscript
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:ycm_python_binary_path = 'python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/config/ycm_conf.py'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_min_num_identifier_candidate_chars = 3
 let g:ycm_complete_in_comments = 1

@@ -19,6 +19,8 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'ervandew/supertab'
+
 Plug 'lambdalisue/suda.vim'
 
 Plug 'prabirshrestha/vim-lsp'
@@ -44,3 +46,12 @@ Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 Plug 'prabirshrestha/asyncomplete-necovim.vim'
 Plug 'prabirshrestha/asyncomplete-flow.vim'
+
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neoinclude.vim'
+" Completion framework
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-zsh'
+Plug 'carlitux/deoplete-ternjs'

@@ -27,6 +27,8 @@ alias hgs='hexo g && hexo s'
 alias chgs='rm -rf /home/h/site/public/{css,js} && hexo g &&
 hexo s'
 
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 alias enable='sudo systemctl enable'

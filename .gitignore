@@ -32,3 +32,10 @@
 !.config/yay
 # neovim
 !.config/nvim/
+# Visual Studio Code
+!.config/Code - OSS/
+.config/Code - OSS/*
+!.config/Code - OSS/User/
+.config/Code - OSS/User/*
+!.config/Code - OSS/User/settings.json
+!.config/Code - OSS/User/keybindings.json
