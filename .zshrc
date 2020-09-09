@@ -50,21 +50,52 @@ function __exists() {
         builtin cd "$1"
     }
 
-    alias psin="sudo pacman -S --needed"
-    alias ys="pikaur -S --needed"
-    alias pss="pacman -Ss"
-    alias yss="pikaur -Ss"
+    alias up='pikaur -Syu'
 
-    alias prus="sudo pacman -Rsscun"
-    alias pu="sudo pacman -U "
-    alias pc="yes | sudo pacman -Sc"
+    alias pi='pacman -Si'
+    alias po='pacman -Qo'
+    alias pq='pacman -Qi'
+    alias pl='pacman -Ql'
+    alias pqs='pacman -Qs'
 
-    alias hcgs="hexo clean && hexo g && hexo s"
+    function poc() {
+        pacman -Qo $(which $1)
+    }
 
-    alias start="sudo systemctl start"
-    alias stop="sudo systemctl stop"
-    alias restart="sudo systemctl reload-or-restart"
-    alias status="systemctl status"
+    function poc() {
+        pacman -Qo $(which $1)
+    }
+
+    if __exists pacman; then
+        alias psin="sudo pacman -S --needed"
+        alias pss="pacman -Ss"
+        alias pi='pacman -Si'
+        alias po='pacman -Qo'
+        alias pq='pacman -Qi'
+        alias pl='pacman -Ql'
+        alias pqs='pacman -Qs'
+        alias prus="sudo pacman -Rsscun"
+        alias pu="sudo pacman -U "
+        alias pc="yes | sudo pacman -Sc"
+    else
+        unfunction poc
+    fi
+    if __exists pikaur; then
+        alias up='pikaur -Syu'
+        alias ys="pikaur -S --needed"
+        alias yss="pikaur -Ss"
+    fi
+
+    if __exists hexo; then
+        alias hcgs="hexo clean && hexo g && hexo s"
+    fi
+
+    if __exists systemctl; then
+        alias start="sudo systemctl start"
+        alias stop="sudo systemctl stop"
+        alias restart="sudo systemctl reload-or-restart"
+        alias status="systemctl status"
+    fi
 
     function gcom() {
         if ! git add -A; then return $?; fi
