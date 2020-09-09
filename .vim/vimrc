@@ -1,6 +1,0 @@
-source ~/.vim/config/script.vim
-source ~/.vim/config/settings.vim
-source ~/.vim/config/plugins.vim
-source ~/.vim/config/mappings.vim
-
-colorscheme molokai
