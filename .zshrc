@@ -177,6 +177,7 @@ function __exists() {
     # setopt no_always_to_end # move cursor to end if full completion is inserted
     setopt long_list_jobs # display PID for process status
     setopt complete_in_word # complete not just at the end
+    setopt hash_list_all # hash before all commands
     setopt c_bases # output number in C format
     setopt no_sh_word_split # zsh style word split
     setopt no_glob_dots # do not match dots, useful for dotfiles
