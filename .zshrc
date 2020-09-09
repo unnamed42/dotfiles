@@ -461,15 +461,15 @@ zinit wait"0" lucid for \
     blockf \
         voronkovich/gitignore.plugin.zsh \
     blockf atinit"zicompinit; zicdreplay" \
-        zsh-users/zsh-completions \
-    atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
+        zsh-users/zsh-completions
 
 zinit wait"!1" lucid for \
      atinit'zstyle ":history-search-multi-word" page-size "7"' \
         zdharma/history-search-multi-word \
     atload"__bind_history_keys; export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none" \
         zsh-users/zsh-history-substring-search \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
 
 zinit lucid for \
     compile"(pure|async).zsh" pick"async.zsh" src"pure.zsh" \
