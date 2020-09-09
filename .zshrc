@@ -50,18 +50,6 @@ function __exists() {
         builtin cd "$1"
     }
 
-    alias up='pikaur -Syu'
-
-    alias pi='pacman -Si'
-    alias po='pacman -Qo'
-    alias pq='pacman -Qi'
-    alias pl='pacman -Ql'
-    alias pqs='pacman -Qs'
-
-    function poc() {
-        pacman -Qo $(which $1)
-    }
-
     function poc() {
         pacman -Qo $(which $1)
     }
