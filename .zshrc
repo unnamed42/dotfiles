@@ -203,27 +203,27 @@ function __exists() {
 # *}}
 
 # *{{ setopt
-    setopt auto_cd # execute cd when command not executable
+    setopt auto_cd              # execute cd when command not executable
     setopt interactive_comments # allow comments in interative shell
-    setopt octal_zeroes # interpret 0-leading numbers as octal
-    setopt no_prompt_cr # print \r before output
-    setopt list_packed # completion menu adaptive size
-    # setopt no_always_to_end # move cursor to end if full completion is inserted
-    setopt long_list_jobs # display PID for process status
-    setopt complete_in_word # complete not just at the end
-    setopt hash_list_all # hash before all commands
-    setopt c_bases # output number in C format
-    setopt no_sh_word_split # zsh style word split
-    setopt no_glob_dots # do not match dots, useful for dotfiles
-    setopt numeric_glob_sort # sort number pattern numerically rather than lexicographically
-    setopt prompt_subst # expansions in prompts
-    setopt notify # report background jobs immediately
-    setopt no_beep # disable beep
-    # setopt zle # use zle
-    setopt correct # correct spelling of commands
-    setopt bad_pattern # error if pattern is badly formed
-    setopt unset # do not error when unset parameter is used
-    setopt no_hup # do not send SIGHUP to background process, i.e. kill them when quitting shell
+    setopt octal_zeroes         # interpret 0-leading numbers as octal
+    setopt no_prompt_cr         # print \r before output
+    setopt list_packed          # completion menu adaptive size
+    # setopt no_always_to_end   # move cursor to end if full completion is inserted
+    setopt long_list_jobs       # display PID for process status
+    setopt complete_in_word     # complete not just at the end
+    setopt hash_list_all        # hash before all commands
+    setopt c_bases              # output number in C format
+    setopt no_sh_word_split     # zsh style word split
+    setopt no_glob_dots         # do not match dots, useful for dotfiles
+    setopt numeric_glob_sort    # sort number pattern numerically rather than lexicographically
+    setopt prompt_subst         # expansions in prompts
+    setopt notify               # report background jobs immediately
+    setopt no_beep              # disable beep
+    # setopt zle                # use zle
+    setopt correct              # correct spelling of commands
+    setopt bad_pattern          # error if pattern is badly formed
+    setopt unset                # do not error when unset parameter is used
+    setopt no_hup               # do not send SIGHUP to background process, i.e. kill them when quitting shell
 
     ## history
     HISTSIZE=100000
