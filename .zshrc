@@ -50,10 +50,7 @@ function __exists() {
         builtin cd "$1"
     }
 
-    function poc() {
-        pacman -Qo $(which $1)
-    }
-
+    # aliases for package managers
     if __exists pacman; then
         alias psin="sudo pacman -S --needed"
         alias pss="pacman -Ss"
@@ -65,8 +62,23 @@ function __exists() {
         alias prus="sudo pacman -Rsscun"
         alias pu="sudo pacman -U "
         alias pc="yes | sudo pacman -Sc"
-    else
-        unfunction poc
+        function poc() {
+            pacman -Qo $(which $1)
+        }
+    elif __exists apt; then
+        alias psin="sudo apt install"
+        alias pss="apt search"
+        alias pi="apt show"
+        alias po="dpkg -S"
+        alias pq="apt show"
+        alias pl="dpkg -L"
+        function pqs() {
+            apt list --installed "*$1*"
+        }
+        alias prus="sudo apt-get remove --autoremove"
+        alias pu="sudo dpkg -i"
+        alias pc="sudo apt clean && sudo apt autoclean"
+        alias up="sudo apt update && sudo apt upgrade"
     fi
     if __exists pikaur; then
         alias up='pikaur -Syu'
@@ -85,23 +97,23 @@ function __exists() {
         alias status="systemctl status"
     fi
 
-    function gcom() {
-        if ! git add -A; then return $?; fi
-        if [ -z "$1" ]; then
-            if ! git commit; then return $?; fi
-        else
-            git commit -m "$1"
-        fi
-    }
-
-    function gpush() {
-        gcom $1 && git push
-    }
-
-    alias gbr="git branch"
-    alias gbd="git branch -D"
-    alias gco="git checkout"
-    alias gcb="git checkout -b"
+    if __exists git; then
+        function gcom() {
+            if ! git add -A; then return $?; fi
+            if [ -z "$1" ]; then
+                if ! git commit; then return $?; fi
+            else
+                git commit -m "$1"
+            fi
+        }
+        function gpush() {
+            gcom $1 && git push
+        }
+        alias gbr="git branch"
+        alias gbd="git branch -D"
+        alias gco="git checkout"
+        alias gcb="git checkout -b"
+    fi
 
     function clearwine() {
         local LOCAL_DIR=~/.local/share
@@ -463,8 +475,8 @@ zinit wait"0" lucid for \
     blockf atinit"zicompinit; zicdreplay" \
         zsh-users/zsh-completions
 
-zinit wait"!1" lucid for \
-     atinit'zstyle ":history-search-multi-word" page-size "7"' \
+zinit wait"!0b" lucid for \
+    atinit'zstyle ":history-search-multi-word" page-size "7"' \
         zdharma/history-search-multi-word \
     atload"__bind_history_keys; export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none" \
         zsh-users/zsh-history-substring-search \
