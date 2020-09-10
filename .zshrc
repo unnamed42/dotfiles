@@ -65,7 +65,7 @@ function __exists() {
         function poc() {
             pacman -Qo $(which $1)
         }
-    elif __exists apt; then
+    elif __exists dpkg && __exists apt; then
         alias psin="sudo apt install"
         alias pss="apt search"
         alias pi="apt show"
@@ -107,7 +107,10 @@ function __exists() {
             fi
         }
         function gpush() {
-            gcom $1 && git push
+            if [ $# -ne 0 ]; then
+                gcom $1
+            fi
+            git push
         }
         alias gbr="git branch"
         alias gbd="git branch -D"
