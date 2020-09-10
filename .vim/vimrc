@@ -1,3 +1,5 @@
+" {{{ vim-plug & python3 setup
+
 set nocp
 set pyxversion=3
 
@@ -23,17 +25,25 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align'
 
 Plug 'udalov/kotlin-vim'
 Plug 'yuezk/vim-js'
 
-Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
+if !has('nvim')
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 call plug#end()
+
+" }}}
+
+" {{{ plugin configurations
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
@@ -113,7 +123,9 @@ let g:indentLine_concealcursor='nc'
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+" }}}
 
+" {{{ options
 colorscheme gruvbox
 
 set encoding=utf-8 ffs=unix,dos,mac
@@ -286,16 +298,9 @@ au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == 
 set completeopt=noinsert,menuone,noselect
 
 set shortmess=asIc
+" }}}
 
-""""""""""""""""""""""""""""
-"                          "
-"                          "
-"    Mappings              "
-"                          "
-"                          "
-"                          "
-""""""""""""""""""""""""""""
-
+" {{{ key mappings
 let mapleader=' '
 
 nnoremap ; :
@@ -378,8 +383,16 @@ imap <silent> <C-d> <C-o>gc$
 nmap <silent> <C-d> ^gc$
 vmap <silent> <C-d> gc
 
+" EasyAlign
+vmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Ctrl+Backspace == delete to previous word
 inoremap <silent> <C-Backspace> <C-o>db
 
 " Ctrl+Del == delete to next word
-inoremap <silent> <C-Del> <C-o>de
+inoremap <silent> G<C-Del> <C-o>de
+
+" }}}
+
+" vim:foldmethod=marker
