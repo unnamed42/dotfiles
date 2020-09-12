@@ -459,6 +459,10 @@ function __exists() {
     bindkey '^H' slash-backward-kill-word
     bindkey '^w' slash-backward-kill-word
 
+    # Home/End to line beginning/end
+    bindkey '^[[H' beginning-of-line
+    bindkey '^[[F' end-of-line
+
     # assign key bindings after zsh-history-substring-search loaded
     function __bind_history_keys() {
         bindkey "^[[A" history-substring-search-up
