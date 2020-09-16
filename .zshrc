@@ -93,7 +93,8 @@ function __exists() {
     if __exists systemctl; then
         alias start="sudo systemctl start"
         alias stop="sudo systemctl stop"
-        alias restart="sudo systemctl reload-or-restart"
+        alias restart="sudo systemctl restart"
+        alias reload="sudo systemctl reload-or-restart"
         alias status="systemctl status"
     fi
 
@@ -453,11 +454,11 @@ function __exists() {
 
     # allow backspace, alt+backspace, ctrl+backspace, ctrl+w for char and word deletion
     # These escape sequences are different depending on your terminal
-    bindkey '^?' backward-delete-char
+    bindkey '^?'    backward-delete-char
     bindkey '^[[3~' delete-char
-    bindkey '\e^?' slash-backward-kill-word
-    bindkey '^H' slash-backward-kill-word
-    bindkey '^w' slash-backward-kill-word
+    bindkey '\e^?'  slash-backward-kill-word
+    bindkey '^H'    slash-backward-kill-word
+    bindkey '^w'    slash-backward-kill-word
 
     # Home/End to line beginning/end
     bindkey '^[[H' beginning-of-line
