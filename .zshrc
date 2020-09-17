@@ -445,6 +445,9 @@ function __exists() {
 # *}}
 
 # *{{ key bindings
+    # vi-mode
+    bindkey -v
+
     # ctrl+left, ctrl+right to wo to next word
     # alt+left, alt+right to wo to next word
     bindkey '^[[1;5D' backward-word
