@@ -1,5 +1,9 @@
 # *{{ zinit initialization
-    ZIROOT=~/.zinit
+    if [[ ${(%):-%N} == /etc/zsh* ]]; then
+        ZIROOT=/etc/zsh/zinit
+    else
+        ZIROOT=~/.zinit
+    fi
 
     # download zinit if not installed
     if [[ ! -d $ZIROOT/bin ]]; then
@@ -520,4 +524,3 @@ prompt_newline="%666v"
 PROMPT="%(?..%F{red} %?) $PROMPT"
 
 # vim:ft=zsh:foldmethod=marker:foldmarker=*{{,*}}
-
