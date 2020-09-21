@@ -448,6 +448,19 @@ function __exists() {
     # vi-mode
     bindkey -v
 
+    # cross-platform keycodes
+    typeset -A keycodes=(
+        up   ${terminfo[kcuu1]}
+        down ${terminfo[kcud1]}
+        del  ${terminfo[kdch1]}
+        home ${terminfo[khome]}
+        end  ${terminfo[kend]}
+    )
+    # platform dependent keycodes
+    if [[ $OSTYPE == darwin* ]]; then
+        keycodes+=([up]='^[[A' [down]='^[[B')
+    fi
+
     # ctrl+left, ctrl+right to wo to next word
     # alt+left, alt+right to wo to next word
     bindkey '^[[1;5D' backward-word
@@ -457,20 +470,20 @@ function __exists() {
 
     # allow backspace, alt+backspace, ctrl+backspace, ctrl+w for char and word deletion
     # These escape sequences are different depending on your terminal
-    bindkey '^?'    backward-delete-char
-    bindkey '^[[3~' delete-char
-    bindkey '\e^?'  slash-backward-kill-word
-    bindkey '^H'    slash-backward-kill-word
-    bindkey '^w'    slash-backward-kill-word
+    bindkey '^?'                 backward-delete-char
+    bindkey "${keycodes[del]}" delete-char
+    bindkey '\e^?'               slash-backward-kill-word
+    bindkey '^H'                 slash-backward-kill-word
+    bindkey '^w'                 slash-backward-kill-word
 
     # Home/End to line beginning/end
-    bindkey '^[[H' beginning-of-line
-    bindkey '^[[F' end-of-line
+    bindkey "${keycodes[home]}" beginning-of-line
+    bindkey "${keycodes[end]}"  end-of-line
 
     # assign key bindings after zsh-history-substring-search loaded
     function __bind_history_keys() {
-        bindkey "^[[A" history-substring-search-up
-        bindkey "^[[B" history-substring-search-down
+        bindkey "${keycodes[up]}"   history-substring-search-up
+        bindkey "${keycodes[down]}" history-substring-search-down
     }
 # *}}
 
