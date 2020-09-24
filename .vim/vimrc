@@ -3,7 +3,17 @@
 set nocp
 set pyxversion=3
 
+" directory which this script resides in
+let s:this_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+" basedir of vim-plug
 let s:config_dir = expand('~/.vim')
+if s:this_path =~ '^/etc'
+  if has('nvim')
+    s:config_dir = '/etc/xdg/nvim'
+  else
+    s:config_dir = '/etc/vim'
+  endif
+endif
 
 " download vim-plug if not installed
 if empty(glob(s:config_dir.'/autoload/plug.vim'))
