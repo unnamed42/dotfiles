@@ -9,9 +9,9 @@ let s:this_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:config_dir = expand('~/.vim')
 if s:this_path =~ '^/etc'
   if has('nvim')
-    s:config_dir = '/etc/xdg/nvim'
+    let s:config_dir = '/etc/xdg/nvim'
   else
-    s:config_dir = '/etc/vim'
+    let s:config_dir = '/etc/vim'
   endif
 endif
 
