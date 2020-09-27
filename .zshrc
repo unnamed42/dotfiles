@@ -6,15 +6,15 @@
   fi
 
   # download zinit if not installed
-  if [[ ! -d $ZIROOT/bin ]]; then
-    mkdir -p ZIROOT
+  if [[ ! -d $ZIROOT || ! -d $ZIROOT/bin ]]; then
+    mkdir -p $ZIROOT
     git clone https://github.com/zdharma/zinit.git $ZIROOT/bin --depth=1
   fi
 
   # zinit plugins
   typeset -A ZINIT=(
     HOME_DIR $ZIROOT
-    BIN_DIR  $ZIROOT
+    BIN_DIR  $ZIROOT/bin
   )
 
   source $ZIROOT/bin/zinit.zsh
