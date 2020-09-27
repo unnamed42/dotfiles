@@ -451,47 +451,51 @@
   # vi-mode
   bindkey -v
 
-  # cross-platform keycodes
-  typeset -A keycodes=(
-    up   ${terminfo[kcuu1]}
-    down ${terminfo[kcud1]}
-    del  ${terminfo[kdch1]}
-    home ${terminfo[khome]}
-    end  ${terminfo[kend]}
-  )
-  # platform dependent keycodes
-  if [[ $OSTYPE == darwin* ]]; then
-    keycodes+=(
-      up   '^[[A'
-      down '^[[B'
-      home '^[[H'
-      end  '^[[F'
-    )
+  # enable application mode when zle is active
+  if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+    autoload -Uz add-zle-hook-widget
+    function __zle_application_start { echoti smkx }
+    function __zle_application_stop  { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init   __zle_application_start
+    add-zle-hook-widget -Uz zle-line-finish __zle_application_stop
   fi
 
-  # ctrl+left, ctrl+right to wo to next word
-  # alt+left, alt+right to wo to next word
-  bindkey '^[[1;5D' backward-word
-  bindkey '^[[1;5C' forward-word
-  bindkey '^[[1;3D' backward-word
-  bindkey '^[[1;3C' forward-word
+  # keycode definition
+  typeset -A __keys=(
+    'CtrlLeft'  '\e[1;5D \e[5D \e\e[D \eOd'
+    'CtrlRight' '\e[1;5C \e[5C \e\e[C \eOc'
+    'BS'        '^?'
+    'Delete'    '\e[3~'
+    'Home'      "$terminfo[khome]"
+    'PageUp'    "$terminfo[kpp]"
+    'End'       "$terminfo[kend]"
+    'PageDown'  "$terminfo[knp]"
+    'Up'        "$terminfo[kcuu1]"
+    'Left'      "$terminfo[kcub1]"
+    'Down'      "$terminfo[kcud1]"
+    'Right'     "$terminfo[kcuf1]"
+    'BackTab'   "$terminfo[kcbt]"
+  )
 
-  # allow backspace, alt+backspace, ctrl+backspace, ctrl+w for char and word deletion
-  # These escape sequences are different depending on your terminal
-  bindkey '^?'               backward-delete-char
-  bindkey "${keycodes[del]}" delete-char
-  bindkey '\e^?'             slash-backward-kill-word
-  bindkey '^H'               slash-backward-kill-word
-  bindkey '^w'               slash-backward-kill-word
+  bindkey "$__keys[Home]" beginning-of-line
+  bindkey "$__keys[End]"  end-of-line
 
-  # Home/End to line beginning/end
-  bindkey "${keycodes[home]}" beginning-of-line
-  bindkey "${keycodes[end]}"  end-of-line
+  for key in "${(s: :)__keys[CtrlLeft]}"
+    bindkey "$key" vi-backward-word
+  for key in "${(s: :)__keys[CtrlRight]}"
+    bindkey "$key" vi-forward-word
+
+  bindkey "$__keys[Left]"   backward-char
+  bindkey "$__keys[Right]"  forward-char
+  bindkey "$__keys[Delete]" delete-char
+  bindkey "$__keys[BS]"     backward-delete-char
+
+  bindkey '^w' slash-backward-kill-word
 
   # assign key bindings after zsh-history-substring-search loaded
   function __bind_history_keys() {
-    bindkey "${keycodes[up]}"   history-substring-search-up
-    bindkey "${keycodes[down]}" history-substring-search-down
+    bindkey "$__keys[Up]"   history-substring-search-up
+    bindkey "$__keys[Down]" history-substring-search-down
   }
 # *}}
 
