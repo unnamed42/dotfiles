@@ -500,32 +500,35 @@
 # *}}
 
 # *{{ zinit plugins
-  zinit wait"0" lucid for \
-    arzzen/calc.plugin.zsh \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit" \
-      zdharma/fast-syntax-highlighting \
-    blockf as"completion" \
-      gradle/gradle-completion \
-    blockf \
-      voronkovich/gitignore.plugin.zsh \
-    blockf atinit"zicompinit; zicdreplay" \
-      zsh-users/zsh-completions
-
-  zinit wait"!0b" lucid for \
-    atinit'zstyle ":history-search-multi-word" page-size "7"' \
-      zdharma/history-search-multi-word \
-    atload"__bind_history_keys; export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none" \
-      zsh-users/zsh-history-substring-search \
-    atload"!_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions
-
-  zinit lucid for \
-    compile"(pure|async).zsh" pick"async.zsh" src"pure.zsh" \
-      sindresorhus/pure
-# *}}
-
 # autosuggestions async mode
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+
+zinit wait"0" lucid for \
+  arzzen/calc.plugin.zsh \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit" \
+    zdharma/fast-syntax-highlighting \
+  blockf as"completion" \
+    gradle/gradle-completion \
+  blockf \
+    voronkovich/gitignore.plugin.zsh \
+  blockf atinit"zicompinit; zicdreplay" \
+    zsh-users/zsh-completions
+
+zinit wait"!0b" lucid for \
+  atinit'zstyle ":history-search-multi-word" page-size "7"' \
+    zdharma/history-search-multi-word \
+  atload"__bind_history_keys; export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none" \
+    zsh-users/zsh-history-substring-search \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+zinit lucid for \
+  compile"(pure|async).zsh" pick"async.zsh" src"pure.zsh" \
+    sindresorhus/pure
+# *}}
+
+# set username to green, if visible
+zstyle ":prompt:pure:user" color green
 # pure inline prompt
 prompt_newline="%666v"
 # show error code
