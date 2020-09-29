@@ -1,7 +1,9 @@
 " {{{ vim-plug & python3 setup
 
 set nocp
-set pyxversion=3
+if !has('nvim')
+  set pyxversion=3
+endif
 
 " directory which this script resides in
 let s:this_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
