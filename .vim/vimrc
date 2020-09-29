@@ -27,7 +27,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin(s:config_dir.'/plugged')
 
-Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
@@ -39,6 +39,9 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'udalov/kotlin-vim'
 Plug 'yuezk/vim-js'
+Plug 'uarun/vim-protobuf'
+Plug 'chr4/nginx.vim'
+Plug 'justinmk/vim-syntax-extra'
 
 if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
@@ -118,7 +121,7 @@ au FileType cmake RainbowToggleOff
 
 " lightline.vim
 let g:lightline = {
-\ 'colorscheme': 'wombat',
+\ 'colorscheme': 'nord',
 \ 'separator': { 'left': '', 'right': '' },
 \ 'subseparator': { 'left': '', 'right': '' },
 \ 'active': {
@@ -136,7 +139,7 @@ autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 " }}}
 
 " {{{ options
-colorscheme gruvbox
+colorscheme nord
 
 set encoding=utf-8 ffs=unix,dos,mac
 
