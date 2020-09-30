@@ -39,11 +39,13 @@ Plug 'tpope/vim-sleuth'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 
+" syntax highlighting definitions
 Plug 'udalov/kotlin-vim'
 Plug 'yuezk/vim-js'
 Plug 'uarun/vim-protobuf'
 Plug 'chr4/nginx.vim'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'solarnz/thrift.vim'
 
 if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
