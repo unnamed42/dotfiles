@@ -29,7 +29,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin(s:config_dir.'/plugged')
 
-Plug 'arcticicestudio/nord-vim'
+Plug 'srcery-colors/srcery-vim'
 
 Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
@@ -123,7 +123,7 @@ au FileType cmake RainbowToggleOff
 
 " lightline.vim
 let g:lightline = {
-\ 'colorscheme': 'nord',
+\ 'colorscheme': 'srcery',
 \ 'separator': { 'left': '', 'right': '' },
 \ 'subseparator': { 'left': '', 'right': '' },
 \ 'active': {
@@ -141,7 +141,7 @@ autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 " }}}
 
 " {{{ options
-colorscheme nord
+colorscheme srcery
 
 set encoding=utf-8 ffs=unix,dos,mac
 
