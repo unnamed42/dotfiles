@@ -535,8 +535,12 @@ prompt_newline="%666v"
 PROMPT="%(?..%F{red} %?) $PROMPT"
 
 # *{{ customization files
-if [ -f /etc/zsh/zshrc.local ]; then source /etc/zsh/zshrc.local; fi
-if [ -f ~/.zshrc.local ]; then source ~/.zshrc.local; fi
+if [[ -f /etc/zsh/zshrc.local && ${(%):-%N} != /etc/zsh/zshrc.local ]]; then
+  source /etc/zsh/zshrc.local
+fi
+if [[ -f ~/.zshrc.local && ${(%):-%N} != ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 # *}}
 
-# vim:ft=zsh:foldmethod=marker:foldmarker=*{{,*}}
+# vim: ft=zsh:foldmethod=marker:foldmarker=*{{,*}}
