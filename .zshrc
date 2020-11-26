@@ -1,7 +1,5 @@
-__ZSHRC_CURRENT_FILE=${(%):-%N}
-
 # *{{ zinit initialization
-  if [[ $__ZSHRC_CURRENT_FILE == /etc/zsh* ]]; then
+  if [[ ${(%):-%N} == /etc/zsh* ]]; then
     ZIROOT=/etc/zsh/zinit
   else
     ZIROOT=~/.zinit
@@ -21,18 +19,14 @@ __ZSHRC_CURRENT_FILE=${(%):-%N}
 
   source $ZIROOT/bin/zinit.zsh
 
-  # ZDOTDIR ?= HOME
-  : "${ZDOTDIR="$HOME"}"
+  # set ZDOTDIR to HOME if it is empty
+  : "${ZDOTDIR:="$HOME"}"
 # *}}
 
 # *{{ utility functions
   function __exists() {
     (( ${+commands[$1]} )) && return 0
     return 1
-  }
-
-  function __source() {
-    [[ -r "$1" && $__ZSHRC_CURRENT_FILE != "$1" ]] && source "$1"
   }
 # *}}
 
@@ -541,8 +535,12 @@ prompt_newline="%666v"
 PROMPT="%(?..%F{red} %?) $PROMPT"
 
 # *{{ customization files
-__source /etc/zsh/zshrc.local
-__source ~/.zshrc.local
+if [[ -f /etc/zsh/zshrc.local && ${(%):-%N} != /etc/zsh/zshrc.local ]]; then
+  source /etc/zsh/zshrc.local
+fi
+if [[ -f ~/.zshrc.local && ${(%):-%N} != ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 # *}}
 
 # vim: ft=zsh:foldmethod=marker:foldmarker=*{{,*}}
