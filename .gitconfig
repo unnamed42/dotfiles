@@ -1,0 +1,11 @@
+[alias]
+	la = log --abbrev-commit --all --oneline --decorate --graph
+	last = log --abbrev-commit -1 HEAD --stat
+	cm = commit -m
+	cma = commit --amend --no-edit
+	st = status -sb
+	br = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f"
+	brd = branch -D
+	ll = !git log --abbrev-commit --oneline --decorate --graph --first-parent ${1:-$(git rev-parse --abbrev-ref HEAD)}
+	sync = "!f() { [ $# -ne 0 ] && (git fetch origin ${1}:${1} && git rebase $1); }; f"
+

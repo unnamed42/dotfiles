@@ -3,6 +3,7 @@
 
 # track gitignore itself
 !.gitignore
+!.gitconfig
 
 # configs in root directory
 !.zshrc
