@@ -523,27 +523,8 @@ zinit wait"!0b" lucid for \
     zsh-users/zsh-autosuggestions
 
 zinit lucid for \
-  eendroroy/alien
+  unnamed42/prompt-naive
 # *}}
-
-# customization for alien theme
-export ALIEN_SECTIONS_LEFT=(
-  exit
-  user
-  path
-  vcs_branch:async
-  vcs_status:async
-  vcs_dirty:async
-  ssh
-  venv
-  prompt
-)
-export ALIEN_SECTIONS_RIGHT=(
-  battery
-  time
-)
-export ALIEN_USE_NERD_FONT=0
-export ALIEN_THEME=bnw
 
 # *{{ customization files
 if [[ -f /etc/zsh/zshrc.local && ${(%):-%N} != /etc/zsh/zshrc.local ]]; then
