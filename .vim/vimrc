@@ -3,6 +3,7 @@
 set nocp
 if !has('nvim')
   set pyxversion=3
+  pythonx import pynvim
 endif
 
 " directory which this script resides in
@@ -21,8 +22,8 @@ endif
 if empty(glob(s:config_dir.'/autoload/plug.vim'))
   execute '!curl' '-fLo' s:config_dir.'/autoload/plug.vim' '--create-dirs'
     \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  " exec '!chmod' '755' s:config_dir.'/autoload'
-  exec "source" s:config_dir.'/autoload/plug.vim'
+  exec '!chmod' '755' s:config_dir.'/autoload'
+  exec source s:config_dir.'/autoload/plug.vim'
   PlugInstall
 endif
 
@@ -47,6 +48,12 @@ Plug 'uarun/vim-protobuf'
 Plug 'chr4/nginx.vim'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'solarnz/thrift.vim'
+
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
