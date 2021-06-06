@@ -52,6 +52,11 @@
     builtin cd "$1"
   }
 
+  # https://apple.stackexchange.com/a/113168
+  function cls() {
+    clear && printf '\e[3J'
+  }
+
   # aliases for package managers
   if __exists pacman; then
     alias psin="sudo pacman -S --needed"
