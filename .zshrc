@@ -499,8 +499,8 @@
 
   # assign key bindings after zsh-history-substring-search loaded
   function __bind_history_keys() {
-    bindkey "$__keys[Up]"   history-substring-search-up
-    bindkey "$__keys[Down]" history-substring-search-down
+    bindkey "$__keys[Up]"   history-search-backward
+    bindkey "$__keys[Down]" history-search-forward
   }
 # *}}
 
@@ -522,8 +522,6 @@ zinit wait"0" lucid for \
 zinit wait"!0b" lucid for \
   atinit'zstyle ":history-search-multi-word" page-size "7"' \
     zdharma/history-search-multi-word \
-  atload"__bind_history_keys; export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none" \
-    zsh-users/zsh-history-substring-search \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
