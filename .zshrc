@@ -8,7 +8,7 @@
   # download zinit if not installed
   if [[ ! -d $ZIROOT || ! -d $ZIROOT/bin ]]; then
     mkdir -p $ZIROOT
-    git clone https://github.com/zdharma/zinit.git $ZIROOT/bin --depth=1
+    git clone https://github.com/zdharma-continuum/zinit.git $ZIROOT/bin --depth=1
   fi
 
   # zinit plugins
@@ -511,7 +511,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 zinit wait"0" lucid for \
   arzzen/calc.plugin.zsh \
   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
   blockf as"completion" \
     gradle/gradle-completion \
   blockf \
@@ -521,7 +521,7 @@ zinit wait"0" lucid for \
 
 zinit wait"!0b" lucid for \
   atinit'zstyle ":history-search-multi-word" page-size "7"' \
-    zdharma/history-search-multi-word \
+    zdharma-continuum/history-search-multi-word \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
