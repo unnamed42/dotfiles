@@ -55,22 +55,83 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 
+" completion and langauge client
 if !has('nvim')
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'ncm2/ncm2-path'
+Plug 'prabirshrestha/vim-lsp' | Plug 'ncm2/ncm2-vim-lsp'
 
 call plug#end()
 
 " }}}
 
-" {{{ plugin configurations
+" {{{ completion options
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
+if executable('vim-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'vim-language-server',
+    \ 'cmd': { server_info->['vim-language-server', '--stdio'] },
+    \ 'whitelist': ['vim'],
+    \ 'initialization_options': {
+        \ 'vimruntime': $VIMRUNTIME,
+        \ 'runtimepath': &rtp,
+    \ }})
+endif
+
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'bash-language-server',
+    \ 'cmd': { server_info->[&shell, &shellcmdflag, 'bash-language-server start'] },
+    \ 'allowlist': ['sh'],
+    \ })
+endif
+
+if executable('ccls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'ccls',
+    \ 'cmd': { server_info->['ccls'] },
+    \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json')) },
+    \ 'initialization_options': {},
+    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+    \ })
+endif
+
+if executable('gopls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'gopls',
+    \ 'cmd': { server_info->['gopls', '-remote=auto'] },
+    \ 'allowlist': ['go'],
+    \ 'initialization_options': {
+        \ 'ui.semanticTokens': v:true,
+        \ 'format.gofumpt': v:true,
+      \ },
+    \ })
+  au BufWritePre *.go LspDocumentFormatSync
+endif
+
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': { server_info->['pyls'] },
+    \ 'whitelist': ['python'],
+    \ 'workspace_config': {
+        \ 'pyls': {
+            \ 'plugins': {
+                \ 'pydocstyle': { 'enabled': v:true }
+            \ },
+        \ },
+      \ },
+    \ })
+endif
+
+au BufEnter * call ncm2#enable_for_buffer()
+
+" }}}
+
+" {{{ plugin configurations
 
 " built-in syntax options
 let g:load_doxygen_syntax = 1
@@ -84,21 +145,6 @@ let cpp_no_cpp14 = 0
 
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
-
-" LanguageClient
-let g:LanguageClient_serverCommands = {
-  \ 'rust': ['rls'],
-  \ 'cpp': ['clangd'],
-  \ 'python': ['pyls'],
-  \ 'go': ['gopls'],
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'typescript': ['javascript-typescript-stdio'],
-  \ }
-
-let g:LanguageClient_rootMarkers = {
-  \ 'javascript': ['jsconfig.json'],
-  \ 'typescript': ['tsconfig.json'],
-  \ }
 
 " rainbow parenthese
 let g:rainbow_active = 1
@@ -132,14 +178,40 @@ let g:rainbow_conf = {
 au FileType cmake RainbowToggleOff
 
 " lightline.vim
+
+" wrapper for vim-signify
+function! LightlineSignify()
+  let [added, changed, removed] = sy#repo#get_stats()
+  let l:sy = ''
+  for [flag, flag_count] in [
+      \ [exists('g:signify_sign_add')    ? g:signify_sign_add    : '+', added],
+      \ [exists('g:signify_sign_delete') ? g:signify_sign_delete : '-', removed],
+      \ [exists('g:signify_sign_change') ? g:signify_sign_change : '!', changed]
+    \ ]
+    if flag_count > 0
+      let l:sy .= printf('%s%d', flag, flag_count)
+    endif
+  endfor
+  if !empty(l:sy)
+    let l:sy = printf('[%s]', l:sy)
+    let l:sy_vcs = get(b:sy, 'updated_by', '???')
+    return printf('%s%s', l:sy_vcs, l:sy)
+  else
+    return ''
+  endif
+endfunction
+
 let g:lightline = {
 \ 'colorscheme': 'srcery',
 \ 'separator': { 'left': '', 'right': '' },
 \ 'subseparator': { 'left': '', 'right': '' },
 \ 'active': {
 \   'left': [ ['mode', 'paste'],
-\             ['gitbranch', 'readonly', 'filename'] ]
+\             ['gitbranch', 'readonly', 'filename', 'modified'] ]
 \ },
+\ 'component_function': {
+\   'gitbranch': 'LightlineSignify'
+\ }
 \}
 
 " let g:indentLine_setConceal=0
@@ -147,7 +219,6 @@ let g:indentLine_concealcursor='nc'
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 " }}}
 
 " {{{ options
@@ -423,4 +494,4 @@ inoremap <silent> G<C-Del> <C-o>de
 
 " }}}
 
-" vim:foldmethod=marker
+" vim: fdm=marker fmr={{{,}}} fen
