@@ -12,7 +12,7 @@
   fi
 
   # zinit plugins
-  typeset -A ZINIT=(
+  typeset -gA ZINIT=(
     HOME_DIR $ZIROOT
     BIN_DIR  $ZIROOT/bin
   )
