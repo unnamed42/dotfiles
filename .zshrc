@@ -138,6 +138,14 @@
     update-desktop-database $LOCAL_DIR/applications
     update-mime-database $LOCAL_DIR/mime/
   }
+
+  function __hostname() {
+    if __exists hostname; then
+      hostname
+    else
+      hostnamectl hostname
+    fi
+  }
 # *}}
 
 # *{{ autoload
@@ -405,7 +413,7 @@
   [[ -r ~/.ssh/known_hosts ]] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
   [[ -r /etc/hosts ]] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
   hosts=(
-    $(hostname)
+    $(__hostname)
     "$_ssh_config_hosts[@]"
     "$_ssh_hosts[@]"
     "$_etc_hosts[@]"
