@@ -1,10 +1,6 @@
 " {{{ vim-plug & python3 setup
 
 set nocp
-if !has('nvim')
-  set pyxversion=3
-  pythonx import pynvim
-endif
 
 " directory which this script resides in
 let s:this_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
@@ -51,19 +47,32 @@ else
 endif
 
 " completion and langauge client
-if !has('nvim')
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'prabirshrestha/vim-lsp' | Plug 'ncm2/ncm2-vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp' | Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
 
 call plug#end()
 
 " }}}
 
 " {{{ completion options
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
 
 if executable('vim-language-server')
   au User lsp_setup call lsp#register_server({
@@ -122,7 +131,6 @@ if executable('pyls')
     \ })
 endif
 
-au BufEnter * call ncm2#enable_for_buffer()
 
 " }}}
 
