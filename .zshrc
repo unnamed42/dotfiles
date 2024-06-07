@@ -8,16 +8,16 @@
   # download zinit if not installed
   if [[ ! -d $ZIROOT || ! -d $ZIROOT/bin ]]; then
     mkdir -p $ZIROOT
-    git clone https://github.com/zdharma-continuum/zinit.git $ZIROOT/bin --depth=1
+    git clone https://github.com/z-shell/zi.git $ZIROOT/bin --depth=1
   fi
 
   # zinit plugins
-  typeset -gA ZINIT=(
+  typeset -gA ZI=(
     HOME_DIR $ZIROOT
     BIN_DIR  $ZIROOT/bin
   )
 
-  source $ZIROOT/bin/zinit.zsh
+  source ${ZI[BIN_DIR]}/zi.zsh
 
   # set ZDOTDIR to HOME if it is empty
   : "${ZDOTDIR:="$HOME"}"
@@ -518,18 +518,18 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 zinit wait"0" lucid for \
   arzzen/calc.plugin.zsh \
-  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit" \
-    zdharma-continuum/fast-syntax-highlighting \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/F-Sy-H \
   blockf as"completion" \
     gradle/gradle-completion \
   blockf \
     voronkovich/gitignore.plugin.zsh \
-  blockf atinit"zicompinit; zicdreplay" \
+  blockf \
     zsh-users/zsh-completions
 
 zinit wait"!0b" lucid for \
   atinit'zstyle ":history-search-multi-word" page-size "7"' \
-    zdharma-continuum/history-search-multi-word \
+    z-shell/H-S-MW \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
