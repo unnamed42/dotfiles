@@ -2,10 +2,22 @@
 	la = log --abbrev-commit --all --oneline --decorate --graph
 	last = log --abbrev-commit -1 HEAD --stat
 	cm = commit -m
+	ck = checkout
+	cp = cherry-pick
 	cma = commit --amend --no-edit
+	cmp = "!f() { git add $1 && git commit --amend --no-edit && git push --force-with-lease; }; f"
 	st = status -sb
 	br = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f"
 	brd = branch -D
-	ll = !git log --abbrev-commit --oneline --decorate --graph --first-parent ${1:-$(git rev-parse --abbrev-ref HEAD)}
+	ll = log --pretty=mine --date=relative
 	sync = "!f() { [ $# -ne 0 ] && (git fetch origin ${1}:${1} && git rebase $1); }; f"
-
+	synm = "!f() { [ $# -ne 0 ] && (git fetch origin ${1}:${1} && git merge  $1); }; f"
+	clear = "!git remote prune origin && git branch --merged master | egrep -v 'master|main|develop' | xargs git branch -d"
+	locate = branch -a --contains
+	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+	po = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+[push]
+	default = current
+	autoSetupRemote = true
+[pretty]
+	mine = %C(yellow)%h %Cblue%>(9,trunc)%ad %Cgreen%<(9,trunc)%aN%Creset %s%Cred% gD% D
