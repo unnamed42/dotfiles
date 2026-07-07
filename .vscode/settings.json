@@ -1,0 +1,209 @@
+{
+    "C_Cpp.autoAddFileAssociations": false,
+    "C_Cpp.autocompleteAddParentheses": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "cmake.configureOnOpen": true,
+    "editor.fontFamily": "Fira Code, monospace, sans",
+    "editor.wordWrap": "bounded",
+    "editor.renderWhitespace": "boundary",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.wordWrapColumn": 160,
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.detectIndentation": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "window.nativeTabs": true,
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    "debug.inlineValues": "auto",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.external.linuxExec": "konsole",
+    "update.mode": "none",
+    "extensions.autoUpdate": "on",
+    "vsicons.dontShowNewVersionMessage": true,
+    "settingsSync.ignoredSettings": [
+        "-http.proxy",
+        "projectManager.any.baseFolders",
+        "projectManager.git.baseFolders"
+    ],
+    "explorer.confirmDelete": false,
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "package",
+    "go.lintFlags": ["--fast-only"],
+    "go.testFlags": [
+        "-p=4",
+        "-gcflags=all=-l",
+        "--tags=test",
+        "-v",
+        "-ldflags=-checklinkname=0"
+    ],
+    "go.delveConfig": {
+        "hideSystemGoroutines": true,
+        "debugAdapter": "dlv-dap"
+    },
+    "go.alternateTools": {
+        "gopls": "trae-gopls"
+    },
+    "go.languageServerFlags": ["-remote=unix;/tmp/gopls-shared.sock"],
+    "go.toolsManagement.autoUpdate": false,
+    "go.useLanguageServer": true,
+    "go.editorContextMenuCommands": {
+        "toggleTestFile": false,
+        "addTags": true,
+        "removeTags": false,
+        "fillStruct": true,
+        "testAtCursor": false,
+        "testFile": false,
+        "testPackage": false,
+        "generateTestForFunction": true,
+        "generateTestForFile": true,
+        "generateTestForPackage": false,
+        "addImport": false,
+        "testCoverage": false,
+        "playground": false,
+        "debugTestAtCursor": false,
+        "benchmarkAtCursor": false
+    },
+    "go.inlayHints.compositeLiteralFields": true,
+    "go.inlayHints.constantValues": true,
+    "gopls": {
+        "ui.semanticTokens": true,
+        "ui.completion.experimentalPostfixCompletions": true,
+        "ui.diagnostic.analyses": {
+            "nilness": true,
+            "unusedwrite": true
+        },
+        "ui.navigation.importShortcut": "Definition",
+        "formatting.gofumpt": true
+    },
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.blame.format": "${author|8?} ${date|14-}",
+    "gitlens.defaultDateFormat": "YYYY/MM/DD",
+    "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+    "settingsSync.ignoredExtensions": [
+        "byted-ide.cloud-workspace",
+        "window.nativetabs",
+        "gitlab.instanceurl",
+        "byted-cannycoder.cannycoder",
+        "byted-ide.gallery",
+        "byted-ide.cloud-toolkit",
+        "byted-sec.bytesec-vscode",
+        "byted-suite.bytesuite-vscode-plugin",
+        "byted-suite.bytesuite-vscode-pack",
+        "byted-ide.cloud-dev-debug",
+        "byted-ide.cloud-dev-merge-request",
+        "byted-ide.cloud-toolkit-pack",
+        "byted-ide.ppe-debug"
+    ],
+    "emmet.excludeLanguages": [
+        "typescript", "typescriptreact"
+    ],
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "strict",
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "alignment.operatorPadding": "left",
+    "projectManager.sortList": "Name",
+    "[proto3]": {
+        "editor.defaultFormatter": "zxh404.vscode-proto3"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "plantuml.render": "Local",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "gitlab.instanceUrl": "https://code.byted.org",
+    "vim.incsearch": true,
+    "vim.autoindent": true,
+    "vim.surround": true,
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        }
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "python.sortImports": "always"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false,
+    "git.defaultBranchName": "master",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "haskell.manageHLS": "PATH",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "hexeditor.columnWidth": 16,
+    "hexeditor.showDecodedText": true,
+    "hexeditor.defaultEndianness": "little",
+    "hexeditor.inspectorType": "aside",
+    "chat.agent.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.editor.enablePreview": false,
+    "chat.disableAIFeatures": true,
+    "gitlens.ai.enabled": false,
+    "tooltitude.pb.formatterEnabled": false,
+    "tooltitude.pb.importsCheckEnabled": false,
+    "projectManager.openInCurrentWindowIfEmpty": "never",
+    "git.openRepositoryInParentFolders": "never",
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "cSpell.diagnosticLevel": "Hint",
+    "projectManager.git.maxDepthRecursion": 1,
+    "scm.repositories.explorer": true,
+    "workbench.colorTheme": "Dark Modern",
+    "makefile.configureOnOpen": false,
+}
