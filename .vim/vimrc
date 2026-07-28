@@ -37,6 +37,8 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 
+Plug 'jasonccox/vim-wayland-clipboard'
+
 " syntax highlighting definitions
 Plug 'sheerun/vim-polyglot'
 
