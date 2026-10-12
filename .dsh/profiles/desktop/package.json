@@ -1,0 +1,44 @@
+{
+  "name": "dsh-profile-desktop",
+  "private": true,
+  "dependencies": {
+    "@chaoset/sandbox-extra-roots": "https://github.com/ShanWuYinShe/dsh-plugins/releases/download/sandbox-extra-roots-v0.4.22-alpha.4/chaoset-sandbox-extra-roots-0.4.22-alpha.4.tgz",
+    "@liustack/modsearch": "^5.10.5",
+    "@michengai/dsh-archive-manager": "^1.0.9",
+    "dsh-chat-import": "^0.25.2",
+    "dsh-client-auto-continue": "^0.14.2",
+    "dsh-context": "0.69.1",
+    "dsh-diff-stat": "^0.1.9",
+    "dsh-lsp-actions": "0.5.12",
+    "dsh-notify-me": "1.5.3",
+    "dsh-openrouter-live": "file:/home/huang/projects/dsh-openrouter-live/dist/dsh-openrouter-live-0.3.0.tgz",
+    "dsh-rewind-plugin": "^0.15.3",
+    "dshmarket": "1.66.17"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-context",
+        "dsh-diff-stat",
+        "dsh-rewind-plugin",
+        "dsh-notify-me",
+        "dshmarket",
+        "@liustack/modsearch",
+        "@michengai/dsh-archive-manager",
+        "dsh-chat-import",
+        "dsh-client-auto-continue",
+        "dsh-lsp-actions",
+        "dsh-openrouter-live",
+        "@deepseek-ai/dsh-experimental-agent-team-profile",
+        "@deepseek-ai/dsh-experimental-inspector-profile",
+        "@chaoset/sandbox-extra-roots",
+        "@deepseek-ai/dsh-experimental-session-search",
+        "@deepseek-ai/dsh-experimental-session-titles-bundle",
+        "@deepseek-ai/dsh-experimental-badge-skill-bundle",
+        "@deepseek-ai/dsh-experimental-tool-worktree"
+      ]
+    }
+  }
+}
