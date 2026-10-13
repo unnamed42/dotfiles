@@ -1,0 +1,28 @@
+# DSH config tracked by git — one path per line, relative to BOTH
+#   $DSH_HOME (default ~/.dsh)  and  <repo>/.dsh
+#
+# Only user config/plugins belong here. Machine state, caches and secrets do not
+# (see .gitignore and .dsh/README.md).
+# Add a file: append the path, then run `bin/dsh-config save`.
+
+# --- profile: desktop (the GUI you actually use) -----------------------------
+profiles/desktop/cordis.yml
+profiles/desktop/cordis.patch.yml
+profiles/desktop/package.json
+profiles/desktop/pnpm-workspace.yaml
+profiles/desktop/pnpm-lock.yaml
+profiles/desktop/.dsh/rules.yaml
+
+# --- profile: web (dsh web / CLI) --------------------------------------------
+profiles/web/cordis.yml
+profiles/web/cordis.patch.yml
+profiles/web/package.json
+profiles/web/pnpm-workspace.yaml
+profiles/web/pnpm-lock.yaml
+profiles/web/.npmrc
+
+# --- plugin config (not plugin source: those live in their own repos) --------
+plugins/dsh-better-edit/config.yaml
+
+# --- app-level user settings -------------------------------------------------
+# dsh-auto-memory.json

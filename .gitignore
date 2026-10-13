@@ -1,1 +1,32 @@
 
+# ── DSH: never track runtime state or secrets ────────────────────────────────
+# (only the whitelist in dsh-manifest.txt should ever land in .dsh/)
+.dsh/sessions/
+.dsh/storages/
+.dsh/cache/
+.dsh/attachments/
+.dsh/rewind-snapshots/
+.dsh/memory/
+.dsh/.config-backups/
+.dsh/.plugin-backups/
+.dsh/subagent-gc-backup/
+.dsh/.credentials.yaml
+.dsh/openrouter-providers.json
+.dsh/.anonymous-user-id
+.dsh/settings.yaml
+.dsh/*.log
+.dsh/dsh-market/
+.dsh/dsh-chat-import/
+.dsh/dsh-builtin-browser-host/
+.dsh/dsh-easyrewrite/
+.dsh/openrouter-live/
+.dsh/stratagate/
+.dsh/plugins/*/runtime/
+.dsh/plugins/dsh-git-worktree/
+.dsh/profiles/*/node_modules/
+.dsh/profiles/*/.dsh-market/
+.dsh/profiles/*/.plugin-manager/
+.dsh/profiles/*/diff-review-state.json
+# write-in-progress leftovers from dshmarket (temp + rename)
+*.tmp-*
+*.dsh-restore-*

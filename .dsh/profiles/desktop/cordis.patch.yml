@@ -4,9 +4,8 @@
 - id: agent-default-model
   name: "@deepseek-ai/dsh-agent-default-model"
   config:
-    provider: openrouter-live
-    model: deepseek/deepseek-v4.1-flash
-    reasoningEffort: high
+    provider: dsh-opencode-go
+    model: deepseek-v4.1-flash
 - id: ui-settings-account
   name: "@deepseek-ai/dsh-client-ui-settings-account"
   config:
@@ -71,8 +70,18 @@
   name: "@chaoset/sandbox-extra-roots"
   config:
     extraWritableRoots:
-      - |-
-        ~/.cargo
-        ~/go/pkg/mod
-        ~/.cache/go
-        ~/.cache/go-build
+      - ~/.cargo
+      - ~/go/pkg
+      - ~/.cache/go
+      - ~/.cache/go-build
+- id: opencode-go
+  name: dsh-opencode-go
+  config:
+    apiKeyEnv: DSH_OPENCODE_GO_ACCOUNT_4D52E24F5AAAFAE435B490AD8DBD9A3C
+    accounts:
+      - id: 4d52e24f5aaafae435b490ad8dbd9a3c
+        apiKeyEnv: DSH_OPENCODE_GO_ACCOUNT_4D52E24F5AAAFAE435B490AD8DBD9A3C
+        name: default
+    accountOperations: []
+    protocolOverrides:
+      deepseek-v4.1-flash: openai-responses

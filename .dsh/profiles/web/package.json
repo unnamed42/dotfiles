@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "@liustack/modsearch": "^5.10.5",
+    "@michengai/dsh-archive-manager": "^1.0.9",
+    "billion-context": "0.1.187",
+    "dsh-better-edit": "^1.0.0",
+    "dsh-builtin-browser": "0.1.22",
+    "dsh-chat-import": "^0.22.2",
+    "dsh-client-auto-continue": "^0.12.0",
+    "dsh-context": "^0.61.0",
+    "dsh-diff-stat": "^0.1.9",
+    "dsh-lsp-actions": "0.5.6",
+    "dsh-notify-me": "1.1.8",
+    "dsh-openrouter-live": "0.2.2",
+    "dsh-rewind-plugin": "^0.14.0",
+    "dshmarket": "^1.66.6"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-better-edit",
+        "dsh-context",
+        "dsh-diff-stat",
+        "dsh-rewind-plugin",
+        "dsh-notify-me",
+        "dshmarket",
+        "@liustack/modsearch",
+        "@michengai/dsh-archive-manager",
+        "dsh-chat-import",
+        "dsh-client-auto-continue",
+        "dsh-lsp-actions",
+        "dsh-openrouter-live",
+        "billion-context"
+      ]
+    }
+  },
+  "name": "dsh-profile-web",
+  "private": true
+}

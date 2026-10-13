@@ -1,0 +1,10 @@
+rules:
+  - match:
+      network:
+        domains:
+          - cdn.npmmirror.com
+          - registry.npmmirror.com
+          - mirrors.cloud.tencent.com
+          - awesome-dsh-plugin.com
+    action: allow
+    reason: Allow dsh market plugin
